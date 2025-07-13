@@ -1,0 +1,6 @@
+Store Sign Detection Results
+Timestamp: 2025-07-13T02:54:46.578Z
+Detections: 1
+Labeled Image: /Users/alessiograncini/Desktop/MentraOS/Project-Navigation-App/images/roboflow_labeled_image.jpg
+Details:
+- text: 62.6% at (36,618.5)

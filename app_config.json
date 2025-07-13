@@ -1,0 +1,272 @@
+{
+  "name": "MentraOS Navigation",
+  "description": "Turn-by-turn GPS navigation with voice guidance for smart glasses. Get directions, find places, and navigate hands-free.",
+  "version": "1.0.0",
+  "permissions": [
+    {
+      "type": "LOCATION",
+      "description": "Required for GPS navigation, route calculation, and real-time position tracking"
+    },
+    {
+      "type": "MICROPHONE",
+      "description": "For voice commands like 'navigate to', 'find nearest', and voice guidance controls"
+    }
+  ],
+  "settings": [
+    {
+      "type": "group",
+      "title": "Navigation Preferences"
+    },
+    {
+      "type": "select",
+      "key": "route_type",
+      "label": "Preferred Route Type",
+      "defaultValue": "fastest",
+      "options": [
+        { "label": "Fastest Route", "value": "fastest" },
+        { "label": "Shortest Route", "value": "shortest" },
+        { "label": "Avoid Highways", "value": "avoid_highways" },
+        { "label": "Avoid Tolls", "value": "avoid_tolls" }
+      ]
+    },
+    {
+      "type": "select",
+      "key": "transportation_mode",
+      "label": "Transportation Mode",
+      "defaultValue": "driving",
+      "options": [
+        { "label": "Driving", "value": "driving" },
+        { "label": "Walking", "value": "walking" },
+        { "label": "Cycling", "value": "cycling" },
+        { "label": "Public Transit", "value": "transit" }
+      ]
+    },
+    {
+      "type": "group",
+      "title": "Voice & Audio"
+    },
+    {
+      "type": "toggle",
+      "key": "voice_guidance",
+      "label": "Voice Guidance",
+      "defaultValue": true
+    },
+    {
+      "type": "select",
+      "key": "voice_language",
+      "label": "Voice Language",
+      "defaultValue": "en-US",
+      "options": [
+        { "label": "English (US)", "value": "en-US" },
+        { "label": "English (UK)", "value": "en-GB" },
+        { "label": "Spanish", "value": "es-ES" },
+        { "label": "French", "value": "fr-FR" },
+        { "label": "German", "value": "de-DE" },
+        { "label": "Italian", "value": "it-IT" },
+        { "label": "Portuguese", "value": "pt-BR" },
+        { "label": "Chinese", "value": "zh-CN" },
+        { "label": "Japanese", "value": "ja-JP" }
+      ]
+    },
+    {
+      "type": "slider",
+      "key": "announcement_frequency",
+      "label": "Voice Announcement Frequency",
+      "defaultValue": 2,
+      "min": 1,
+      "max": 5
+    },
+    {
+      "type": "group",
+      "title": "Display Settings"
+    },
+    {
+      "type": "select",
+      "key": "distance_units",
+      "label": "Distance Units",
+      "defaultValue": "metric",
+      "options": [
+        { "label": "Metric (km/m)", "value": "metric" },
+        { "label": "Imperial (mi/ft)", "value": "imperial" }
+      ]
+    },
+    {
+      "type": "toggle",
+      "key": "show_speed",
+      "label": "Show Current Speed",
+      "defaultValue": true
+    },
+    {
+      "type": "toggle",
+      "key": "show_eta",
+      "label": "Show Estimated Arrival Time",
+      "defaultValue": true
+    },
+    {
+      "type": "toggle",
+      "key": "show_distance_remaining",
+      "label": "Show Distance Remaining",
+      "defaultValue": true
+    },
+    {
+      "type": "group",
+      "title": "Location & Privacy"
+    },
+    {
+      "type": "select",
+      "key": "location_accuracy",
+      "label": "Location Accuracy",
+      "defaultValue": "high",
+      "options": [
+        { "label": "High Accuracy (GPS)", "value": "high" },
+        { "label": "Balanced", "value": "balanced" },
+        { "label": "Battery Saver", "value": "low_power" }
+      ]
+    },
+    {
+      "type": "toggle",
+      "key": "save_frequent_destinations",
+      "label": "Save Frequent Destinations",
+      "defaultValue": true
+    },
+    {
+      "type": "group",
+      "title": "Safety Features"
+    },
+    {
+      "type": "toggle",
+      "key": "speed_limit_warnings",
+      "label": "Speed Limit Warnings",
+      "defaultValue": true
+    },
+    {
+      "type": "toggle",
+      "key": "traffic_alerts",
+      "label": "Traffic Alerts",
+      "defaultValue": true
+    },
+    {
+      "type": "toggle",
+      "key": "hands_free_mode",
+      "label": "Hands-Free Mode",
+      "defaultValue": true
+    }
+  ],
+  "tools": [
+    {
+      "id": "navigate_to_destination",
+      "description": "Start navigation to a specific destination",
+      "activationPhrases": [
+        "navigate to",
+        "take me to",
+        "directions to",
+        "go to",
+        "drive to"
+      ],
+      "parameters": {
+        "destination": {
+          "type": "string",
+          "description": "The destination address, place name, or point of interest",
+          "required": true
+        }
+      }
+    },
+    {
+      "id": "find_nearby_places",
+      "description": "Find nearby places of interest",
+      "activationPhrases": [
+        "find nearby",
+        "locate nearest",
+        "where is the closest",
+        "search for",
+        "find a"
+      ],
+      "parameters": {
+        "place_type": {
+          "type": "string",
+          "description": "Type of place to find (gas station, restaurant, hospital, etc.)",
+          "required": true
+        }
+      }
+    },
+    {
+      "id": "cancel_navigation",
+      "description": "Cancel the current navigation",
+      "activationPhrases": [
+        "cancel navigation",
+        "stop navigation",
+        "end route",
+        "cancel route"
+      ],
+      "parameters": {}
+    },
+    {
+      "id": "navigation_status",
+      "description": "Get current navigation status and ETA",
+      "activationPhrases": [
+        "navigation status",
+        "how much time left",
+        "when will I arrive",
+        "ETA",
+        "time remaining"
+      ],
+      "parameters": {}
+    },
+    {
+      "id": "alternative_route",
+      "description": "Find alternative routes to the destination",
+      "activationPhrases": [
+        "alternative route",
+        "different route",
+        "avoid traffic",
+        "find another way"
+      ],
+      "parameters": {}
+    },
+    {
+      "id": "add_waypoint",
+      "description": "Add a waypoint to the current route",
+      "activationPhrases": [
+        "add waypoint",
+        "stop at",
+        "add stop",
+        "via"
+      ],
+      "parameters": {
+        "waypoint": {
+          "type": "string",
+          "description": "The waypoint location to add to the route",
+          "required": true
+        }
+      }
+    },
+    {
+      "id": "report_traffic",
+      "description": "Report traffic conditions or road hazards",
+      "activationPhrases": [
+        "report traffic",
+        "report accident",
+        "report hazard",
+        "road closed"
+      ],
+      "parameters": {
+        "report_type": {
+          "type": "string",
+          "description": "Type of report (traffic, accident, hazard, road work)",
+          "required": true
+        }
+      }
+    },
+    {
+      "id": "restart_session",
+      "description": "Restart the navigation session to allow new routes",
+      "activationPhrases": [
+        "restart session",
+        "unlock navigation",
+        "new route",
+        "start over"
+      ],
+      "parameters": {}
+    }
+  ]
+} 
